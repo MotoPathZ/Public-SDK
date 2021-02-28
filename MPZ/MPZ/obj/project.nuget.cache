@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "ilxtPl44HWGkxFPRmgLwQ3EC5KjCKUi0AF/hv+UG+Dn5NXKDr19JG46fAnhlmh6s782rVv35Hu6HPaDKTY7r7Q==",
+  "success": true,
+  "projectFilePath": "G:\\Develop\\Projects\\MotoPathZ\\SDK\\Public-SDK\\MPZ\\MPZ\\MPZ.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Maxim\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Maxim\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Maxim\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
