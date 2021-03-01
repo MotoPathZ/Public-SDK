@@ -6,60 +6,32 @@ namespace MPZ
 {
     public class MPZClient
     {
-        public static string token;
-        public MPZClient()
+        public static bool isAuth;
+        public static MPZConfig config;
+        public static Models.MPZAuth auth;
+        public MPZClient(MPZConfig configData)
         {
+            config = configData;
             Init();
         }
-        public void Init()
+        public MPZClient()
         {
+            bool isLoadCfg = Tools.ProcessingLocalConfig.Load();
+            if(isLoadCfg) {
+                config = Tools.ProcessingLocalConfig.data;
+                Init();
+            }
+            else
+            {
+                /*...ERROR LOADING CONFIG FILE FOR SDK MPZ...*/
+            }
+            
         }
-        public static string GetLink(Endpoints.Servers server, Endpoints.Type response, string responceData = null, string action = null)
+        public async void Init()
         {
-            string link;
-            switch (server)
-            {
-                case Endpoints.Servers.API_SERVER:
-                    link = Endpoints.API_SERVER;
-                    break;
-                case Endpoints.Servers.CDN_SERVER:
-                    link = Endpoints.CDN_SERVER;
-                    break;
-                case Endpoints.Servers.Host:
-                    link = $"{Endpoints.HostIP}:{Endpoints.HostPort}";
-                    break;
-                default:
-                    link = Endpoints.API_SERVER;
-                    break;
-            }
-            string responcedata = "";
-
-            if (action != null) responcedata = $"/{action}";
-            if (responceData != null) responcedata += $"/{responceData}";
-
-            switch (response)
-            {
-                case Endpoints.Type.News:
-                    link += $"/{Endpoints.News}/{responcedata}";
-                    break;
-                case Endpoints.Type.Devlog:
-                    link += $"/{Endpoints.Devlog}/{responcedata}";
-                    break;
-
-                case Endpoints.Type.ThisUser:
-                    link += $"/{Endpoints.ThisUser}/{responcedata}";
-                    break;
-                case Endpoints.Type.Client:
-                    link += $"/{Endpoints.Client}/{responcedata}";
-                    break;
-
-                case Endpoints.Type.System112:
-                    link += $"/{Endpoints.System112}/{responcedata}";
-                    break;
-                default:
-                    break;
-            }
-            return link;
+            #region Aurhorization
+            auth = await Tools.Networking.AurhorizationAsync();
+            #endregion
         }
     }
 }

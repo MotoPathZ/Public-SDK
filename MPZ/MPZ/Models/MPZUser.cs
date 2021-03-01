@@ -6,7 +6,7 @@ namespace MPZ.Models
 {
     public class MPZUser
     {
-        public int id { get; set; }
+        public uint id { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
         public string username { get; set; }
