@@ -7,7 +7,9 @@ namespace MPZ.Config
     public class Endpoints
     {
         public static readonly string API_SERVER = "http://127.0.0.1:8000/api";
+        //public static readonly string API_SERVER = "https://api.motopathz.ru";
         public static readonly string CDN_SERVER = "http://127.0.0.1:8000/cdn/";
+        //public static readonly string CDN_SERVER = "https://cdn.motopathz.ru/";
         public static readonly string CDN_STATIC_FOLDER = "files/";
         public static readonly string CDN_STATIC_CATALOG = $"{CDN_STATIC_FOLDER}/static/";
         public static readonly string HostIP = "127.0.0.1";
@@ -23,9 +25,9 @@ namespace MPZ.Config
         public static readonly string ThisUser = "/user";
         public static readonly string Client = "/clients";
         #endregion
-        #region Other
-        public static readonly string News = "/news";
-        public static readonly string Devlog = "/devlog";
+        #region Communication
+        public static readonly string News = "/сommunication/news";
+        public static readonly string Devlog = "/сommunication/devlog";
         #endregion
        
         public enum Servers {
