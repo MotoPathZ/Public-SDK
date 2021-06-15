@@ -1,37 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 using MPZ.Config;
+using MPZ.Services;
+using Newtonsoft.Json;
 
 namespace MPZ
 {
     public class MPZClient
     {
-        public static bool isAuth;
-        public static MPZConfig config;
-        public static Models.MPZAuth auth;
-        public MPZClient(MPZConfig configData)
+        public bool isAuth;
+        public static Tools.Config config;
+        public static Tools.Logger Logger;
+        public MPZClient(MPZConfig cfg = null)
         {
-            config = configData;
-            Init();
+            Console.WriteLine("Initialization");
+            Console.WriteLine("Initialization Logget");
+            Logger = new Tools.Logger(Tools.Logger.LogType.Errors);
+            Logger.Log("Logget Init");
+
+            Init(cfg);
         }
-        public MPZClient()
+        private async void Init(MPZConfig cfg = null)
         {
-            bool isLoadCfg = Tools.ProcessingLocalConfig.Load();
-            if(isLoadCfg) {
-                config = Tools.ProcessingLocalConfig.data;
-                Init();
-            }
-            else
+            Logger.Log("Initialization Config");
+            config = new Tools.Config();
+
+            config.LoadConfigAndOAuth2();
+
+            if (cfg != null)
             {
-                /*...ERROR LOADING CONFIG FILE FOR SDK MPZ...*/
+                Logger.Log("Loading configuration data from MPZClient()");
+                config.data.dataConfig = cfg;
+                config.ConfigAndOAuth2Save();
             }
-            
+            Logger.Log("Initialization Config OAuth2");
+            if (config.data.accessData.AccessToken == null || config.data.accessData.AccessToken == "")
+            {
+                Logger.Log("AccessToken for OAuth2 not found");
+                var oAuth2AccessData = await OAuth2GetToken(config.data.dataConfig);
+                config.data.accessData = oAuth2AccessData;
+                Logger.Log("OAuth2 Token");
+                Logger.Log(config.data.accessData.AccessToken);
+                config.ConfigAndOAuth2Save();
+            }
         }
-        public async void Init()
+        private async Task<Models.OAuth2AccessData> OAuth2GetToken(MPZConfig cfgData)
         {
-            #region Aurhorization
-            auth = await Tools.Networking.AurhorizationAsync();
-            #endregion
+            Logger.Log("OAuth2 - OAuth2GetToken");
+
+            return await Task.FromResult(await OAuth2.GetElibilityToken(cfgData.OAuth2, cfgData.UserAuthorization));
         }
     }
 }

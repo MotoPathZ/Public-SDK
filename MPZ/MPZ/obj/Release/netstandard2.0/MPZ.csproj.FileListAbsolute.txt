@@ -6,3 +6,4 @@ G:\Develop\Projects\MotoPathZ\SDK\Public-SDK\MPZ\MPZ\obj\Release\netstandard2.0\
 G:\Develop\Projects\MotoPathZ\SDK\Public-SDK\MPZ\MPZ\obj\Release\netstandard2.0\MPZ.csproj.CoreCompileInputs.cache
 G:\Develop\Projects\MotoPathZ\SDK\Public-SDK\MPZ\MPZ\obj\Release\netstandard2.0\MPZ.dll
 G:\Develop\Projects\MotoPathZ\SDK\Public-SDK\MPZ\MPZ\obj\Release\netstandard2.0\MPZ.pdb
+G:\Develop\Projects\MotoPathZ\SDK\Public-SDK\MPZ\MPZ\obj\Release\netstandard2.0\MPZ.csprojAssemblyReference.cache

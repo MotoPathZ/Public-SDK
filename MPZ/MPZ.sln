@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPZ", "MPZ\MPZ.csproj", "{FCC6E94C-A66E-45BE-822C-6DB62EE852AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MPZ", "MPZ\MPZ.csproj", "{FCC6E94C-A66E-45BE-822C-6DB62EE852AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPZLibTest", "MPZLibTest\MPZLibTest.csproj", "{6B4AA9B8-F1B6-4739-A0C8-4E08ED8FF642}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FCC6E94C-A66E-45BE-822C-6DB62EE852AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCC6E94C-A66E-45BE-822C-6DB62EE852AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCC6E94C-A66E-45BE-822C-6DB62EE852AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B4AA9B8-F1B6-4739-A0C8-4E08ED8FF642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B4AA9B8-F1B6-4739-A0C8-4E08ED8FF642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B4AA9B8-F1B6-4739-A0C8-4E08ED8FF642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B4AA9B8-F1B6-4739-A0C8-4E08ED8FF642}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
