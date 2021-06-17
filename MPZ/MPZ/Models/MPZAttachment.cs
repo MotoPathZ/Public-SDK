@@ -10,7 +10,7 @@ namespace MPZ.Models
         public string uuid;
         public string name;
         public enum AttachmentType { document, photo, file, }
-        public string type;
+        public AttachmentType type;
         public string path;
         public int size;
         public string author_uuid;
