@@ -10,7 +10,7 @@ namespace MPZ.Tools
     public class Networking
     {
         #region Public method
-        public static async System.Threading.Tasks.Task<string> SendToServerForGetAsync(string server, string requestTo, string responce = null, string action = null)
+        public static async System.Threading.Tasks.Task<string> SendToServerForGet(string server, string requestTo, string responce = null, string action = null)
         {
             string url = GetLink(server, requestTo, responce, action);
             return await SendToServerForGetAsync(url);

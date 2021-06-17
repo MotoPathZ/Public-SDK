@@ -31,7 +31,7 @@ namespace MPZLibTest
                     client_secret = "CnKxVKPdRovXdv7g5o6dPEhFNBe9jiJaViBCx5U0",
                     scope = "*"
                 },
-                UserAuthorization = new MPZConfig.UserAuthConfig { username = "owner@motopathz.ru", password = "jQj-RbV-jwx-jM2" }
+                UserAuthorization = new MPZConfig.UserAuthConfig { username = "owner@motopathz.ru", password = "XWN-rLs-jxj-Wjr" }
             });
         }
         #endregion

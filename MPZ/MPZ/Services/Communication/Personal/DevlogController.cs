@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using MPZ.Config;
 using MPZ.Models;
 
-namespace MPZ.Services.Personal
+namespace MPZ.Services.Communication.Personal
 {
     public static class DevlogController
     {
@@ -15,7 +15,7 @@ namespace MPZ.Services.Personal
         {
             MPZClient.Logger.Log($"DevlogController - IndexAsync");
 
-            string json = await Tools.Networking.SendToServerForGetAsync(EndPoints.API_SERVER, EndPoints.Devlog);
+            string json = await Tools.Networking.SendToServerForGet(EndPoints.API_SERVER, EndPoints.devlog);
 
             try
             {
@@ -30,7 +30,7 @@ namespace MPZ.Services.Personal
         public static async Task<Models.Personal.MPZDevlog> ShowAsync(uint id)
         {
             MPZClient.Logger.Log($"DevlogController - ShowAsync");
-            string json = await Tools.Networking.SendToServerForGetAsync(EndPoints.API_SERVER, EndPoints.Devlog, id.ToString());
+            string json = await Tools.Networking.SendToServerForGet(EndPoints.API_SERVER, EndPoints.devlog, id.ToString());
 
             try
             {

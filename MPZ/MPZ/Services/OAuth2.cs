@@ -17,6 +17,12 @@ namespace MPZ.Services
         public static async Task<OAuth2AccessData> GetElibilityToken(
             MPZConfig.OAuth2Config auth2Config,MPZConfig.UserAuthConfig userAuth)
         {
+                    MPZClient.Logger.Log("OAuth2 - GetElibilityToken");//Debug
+                    return await GetElibilityToken(auth2Config, userAuth);
+        }
+        public static async Task<OAuth2AccessData> GetAuthUser(
+            MPZConfig.OAuth2Config auth2Config,MPZConfig.UserAuthConfig userAuth)
+        {
             using (HttpClientHandler httpClientHandler = new HttpClientHandler())
             {
                 using (HttpClient client = new HttpClient(httpClientHandler))
