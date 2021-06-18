@@ -47,7 +47,7 @@ namespace MPZ
                 Logger.Log(config.data.accessData.AccessToken);
                 config.ConfigAndOAuth2Save();
             }
-            user = 
+            //user = 
         }
         private async Task<Models.OAuth2AccessData> OAuth2GetToken(MPZConfig cfgData)
         {
@@ -59,7 +59,8 @@ namespace MPZ
         {
             Logger.Log("OAuth2 - OAuth2GetUser (Search for the user who owns the token)");
 
-            return await Task.FromResult(await OAuth2.GetElibilityToken(cfgData.OAuth2, cfgData.UserAuthorization));
+            //return await Task.FromResult(await OAuth2.GetElibilityToken(cfgData.OAuth2, cfgData.UserAuthorization));
+            return null;
         }
     }
 }

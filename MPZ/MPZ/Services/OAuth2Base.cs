@@ -19,7 +19,7 @@ namespace MPZ.Services
             MPZClient.Logger.Log("OAuth2Base - GetElibilityToken");
             MPZClient.Logger.Log("OAuth2Base - get link for get access token");
 
-            string baseAddress = $"{EndPoints.OATH2_SERVER}{EndPoints.OATH2_TOKEN}";
+            string baseAddress = $"{EndPoints.OAUTH2}{EndPoints.OAUTH2_TOKEN}";
             MPZClient.Logger.Log("OAuth2Base - Base Address : " + baseAddress);
 
             string _grant_type = oauth2Config.grant_type.ToString();
@@ -41,7 +41,7 @@ namespace MPZ.Services
                 scope = _scope
             };
             string fromJson = JsonConvert.SerializeObject(from);
-            var jsonContent = await Tools.Networking.SendToServerForPost(EndPoints.OATH2_SERVER, EndPoints.OATH2_TOKEN, fromJson);
+            var jsonContent = await Tools.Networking.SendToServerForPost(EndPoints.OAUTH2, EndPoints.OAUTH2_TOKEN, fromJson);
             MPZClient.Logger.Log("OAuth2Base - Access Token Received!");
             OAuth2AccessData OAuth2Data = JsonConvert.DeserializeObject<OAuth2AccessData>(jsonContent);
             return OAuth2Data;

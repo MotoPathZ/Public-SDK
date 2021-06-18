@@ -15,7 +15,7 @@ namespace MPZ.Services
         {
             MPZClient.Logger.Log("PostController - IndexAsync");
 
-            string json = await Tools.Networking.SendToServerForGet(EndPoints.API_SERVER, EndPoints.post);
+            string json = await Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.post);
             try
             {
                 return JsonConvert.DeserializeObject<List<MPZPost>>(json);
@@ -29,7 +29,7 @@ namespace MPZ.Services
         public static async Task<MPZPost> ShowAsync(string uuid)
         {
             MPZClient.Logger.Log($"PostController - ShowAsync");
-            string json = await Tools.Networking.SendToServerForGet(EndPoints.API_SERVER, EndPoints.post, uuid);
+            string json = await Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.post, uuid);
 
             try
             {
@@ -45,7 +45,7 @@ namespace MPZ.Services
         {
             MPZClient.Logger.Log($"PostController - ShowAsync");
             string jsonUpdateData = JsonConvert.SerializeObject(updateData);
-            string json = await Tools.Networking.SendToServerForUpdate(EndPoints.API_SERVER, EndPoints.post, jsonUpdateData, uuid);
+            string json = await Tools.Networking.SendToServerForUpdate(EndPoints.API, EndPoints.post, jsonUpdateData, uuid);
 
             try
             {
@@ -60,7 +60,7 @@ namespace MPZ.Services
         public static async Task<MPZPost> DeleteAsync(string uuid)
         {
             MPZClient.Logger.Log($"PostController - DeleteAsync");
-            string json = await Tools.Networking.SendToServerForDelete(EndPoints.API_SERVER, EndPoints.post, null, uuid);
+            string json = await Tools.Networking.SendToServerForDelete(EndPoints.API, EndPoints.post, null, uuid);
 
             try
             {

@@ -15,7 +15,7 @@ namespace MPZ.Services.Communication.Personal
         {
             MPZClient.Logger.Log($"DevlogController - IndexAsync");
 
-            string json = await Tools.Networking.SendToServerForGet(EndPoints.API_SERVER, EndPoints.devlog);
+            string json = await Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.devlog);
 
             try
             {
@@ -30,7 +30,7 @@ namespace MPZ.Services.Communication.Personal
         public static async Task<Models.Personal.MPZDevlog> ShowAsync(uint id)
         {
             MPZClient.Logger.Log($"DevlogController - ShowAsync");
-            string json = await Tools.Networking.SendToServerForGet(EndPoints.API_SERVER, EndPoints.devlog, id.ToString());
+            string json = await Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.devlog, id.ToString());
 
             try
             {

@@ -14,23 +14,10 @@ namespace MPZ.Services
 {
     public class OAuth2 : OAuth2Base
     {
-        public static async Task<OAuth2AccessData> GetElibilityToken(
-            MPZConfig.OAuth2Config auth2Config,MPZConfig.UserAuthConfig userAuth)
+        public static async Task<OAuth2AccessData> GetAuthUser(string access_token)
         {
-                    MPZClient.Logger.Log("OAuth2 - GetElibilityToken");//Debug
-                    return await GetElibilityToken(auth2Config, userAuth);
-        }
-        public static async Task<OAuth2AccessData> GetAuthUser(
-            MPZConfig.OAuth2Config auth2Config,MPZConfig.UserAuthConfig userAuth)
-        {
-            using (HttpClientHandler httpClientHandler = new HttpClientHandler())
-            {
-                using (HttpClient client = new HttpClient(httpClientHandler))
-                {
-                    MPZClient.Logger.Log("OAuth2 - GetElibilityToken");//Debug
-                    return await GetElibilityToken(client, auth2Config, userAuth);
-                }
-            }
+            MPZClient.Logger.Log("OAuth2 - GetAuthUser");
+            return null;
         }
     }
 }
