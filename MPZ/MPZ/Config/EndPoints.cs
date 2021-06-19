@@ -43,7 +43,7 @@ namespace MPZ.Config
         #endregion
         #region Tools
         public static readonly string tools = $"{oauth_user}/tools";
-        public static readonly string tools_max_spead = $"{tools}/max_spead";
+        public static readonly string tools_max_speed = $"{tools}/max_speed";
         #endregion
 
         #region Other
