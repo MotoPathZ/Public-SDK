@@ -7,9 +7,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace MPZ.Services
+namespace MPZ.Services.Communication
 {
-    public static class PostController
+    public class PostController
     {
         public static async Task<List<MPZPost>> IndexAsync()
         {
@@ -71,7 +71,7 @@ namespace MPZ.Services
                 //MPZClient.Logger.Log($"PostController - DeleteAsync | Error: {e.Message}", Tools.Logger.LogType.Errors);
                 //return new MPZPost();
             }
-            return null;
+            return new MPZPost();
         }
     }
 }
