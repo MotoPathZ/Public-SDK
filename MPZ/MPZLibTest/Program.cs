@@ -11,15 +11,15 @@ namespace MPZLibTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("MPZ Lib Test - Start");
-            
-            MPZClient mpz = new MPZClient();
+            Console.WriteLine("Programm - Start MPZ Lib for testing.");
             //For Create json config
             //CreateConfig();
+            MPZClient mpz = new MPZClient();
         }
         #region FOR CREATE JSON CONFIG
         static void CreateConfig()
         {
+            Console.WriteLine("Programm - Start Create Config in mpz lib.");
             new MPZClient(new MPZConfig
             {
                 maxTimeForResponce = 10,
@@ -27,8 +27,8 @@ namespace MPZLibTest
                 OAuth2 = new MPZConfig.OAuth2Config
                 {
                     grant_type = MPZConfig.OAuth2Config.grantType.password,
-                    client_id = "93abd5bb-40a7-4bff-a523-b016a4ea9f9b",
-                    client_secret = "CnKxVKPdRovXdv7g5o6dPEhFNBe9jiJaViBCx5U0",
+                    client_id = "93b32386-56e1-4a59-b4e3-548b15fbf26d",
+                    client_secret = "E5NkDrCuQ9KppiyEn4KslKMa6UB4qYkzOItE0J8b",
                     scope = "*"
                 },
                 UserAuthorization = new MPZConfig.UserAuthConfig { username = "owner@motopathz.ru", password = "XWN-rLs-jxj-Wjr" }

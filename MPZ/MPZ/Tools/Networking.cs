@@ -51,12 +51,14 @@ namespace MPZ.Tools
             {
                 using (HttpClient client = new HttpClient(httpClientHandler))
                 {
-                    client.DefaultRequestHeaders.Authorization =
-                        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", MPZClient.config.data.accessData.AccessToken);
-
+                    if (MPZClient.config.data.accessData != null && MPZClient.config.data.accessData.AccessToken != null)
+                    {
+                        client.DefaultRequestHeaders.Authorization =
+                            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", MPZClient.config.data.accessData.AccessToken);
+                    }
                     var requestMessage = new HttpRequestMessage
                     {
-                        Method = HttpMethod.Post,
+                        Method = HttpMethod.Get,
                         Content = new StringContent("", Encoding.UTF8, "application/json"),
                         RequestUri = new Uri(url),
                     };
@@ -74,9 +76,11 @@ namespace MPZ.Tools
             {
                 using (HttpClient client = new HttpClient(httpClientHandler))
                 {
-                    client.DefaultRequestHeaders.Authorization =
-                        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", MPZClient.config.data.accessData.AccessToken);
-                    
+                    if (MPZClient.config.data.accessData != null && MPZClient.config.data.accessData.AccessToken != null)
+                    {
+                        client.DefaultRequestHeaders.Authorization =
+                            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", MPZClient.config.data.accessData.AccessToken);
+                    }
                     var requestMessage = new HttpRequestMessage
                     {
                         Method = HttpMethod.Post,
@@ -96,9 +100,11 @@ namespace MPZ.Tools
             {
                 using (HttpClient client = new HttpClient(httpClientHandler))
                 {
-                    client.DefaultRequestHeaders.Authorization =
-                        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", MPZClient.config.data.accessData.AccessToken);
-
+                    if (MPZClient.config.data.accessData != null && MPZClient.config.data.accessData.AccessToken != null)
+                    {
+                        client.DefaultRequestHeaders.Authorization =
+                            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", MPZClient.config.data.accessData.AccessToken);
+                    }
                     var requestMessage = new HttpRequestMessage
                     {
                         Method = HttpMethod.Put,
@@ -114,14 +120,16 @@ namespace MPZ.Tools
         }
         private static async System.Threading.Tasks.Task<string> SendToServerForDeleteAsync(string url, string postData = null)
         {
-            MPZClient.Logger.Log("Network - SendToServerForPostAsync");
+            MPZClient.Logger.Log("Network - SendToServerForDeleteAsync");
             using (HttpClientHandler httpClientHandler = new HttpClientHandler())
             {
                 using (HttpClient client = new HttpClient(httpClientHandler))
                 {
-                    client.DefaultRequestHeaders.Authorization =
-                        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", MPZClient.config.data.accessData.AccessToken);
-
+                    if (MPZClient.config.data.accessData != null && MPZClient.config.data.accessData.AccessToken != null)
+                    {
+                        client.DefaultRequestHeaders.Authorization =
+                            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", MPZClient.config.data.accessData.AccessToken);
+                    }
                     var requestMessage = new HttpRequestMessage
                     {
                         Method = HttpMethod.Delete,

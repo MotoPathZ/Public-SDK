@@ -32,13 +32,16 @@ namespace MPZ
 
             if (cfg != null)
             {
-                Logger.Log("Loading configuration data from MPZClient()");
+                Logger.Log("Loading configuration data from MPZClient");
                 config.data.dataConfig = cfg;
                 config.ConfigAndOAuth2Save();
             }
             Logger.Log("Initialization Config OAuth2");
-            if (config.data.accessData.AccessToken == null || config.data.accessData.AccessToken == "" ||
-                cfg != null || cfg != config.data.dataConfig)
+            if (config.data.accessData == null ||
+                config.data.accessData.AccessToken == null ||
+                config.data.accessData.AccessToken == "" ||
+                cfg != null /*&& cfg != config.data.dataConfig*/
+                )
             {
                 Logger.Log("The access token for OAuth2 was not found or the config was updated");
                 var oAuth2AccessData = await OAuth2GetToken(config.data.dataConfig);

@@ -7,8 +7,9 @@ namespace MPZ.Config
     public class EndPoints
     {
         #region Domens
-                                                                                                     ////////////////////////////////////////////////////
-        private static readonly string MASTER =  "motopathz.ru";                                    //        ===> MASTER DOMEN                       //
+                                                                                                      ////////////////////////////////////////////////////
+        private static readonly string MASTER = "127.0.0.1:8000";                                    //       ===> MASTER DOMEN                        //
+        //private static readonly string MASTER =  "motopathz.ru";                                  //        ===> MASTER DOMEN                       //
         private static readonly string MPROTOCOL =  "http://";                                     //         ===> MASTER DOMEN                      //
                                                                                                   ////////////////////////////////////////////////////
         public static readonly string OAUTH2  = $"{MPROTOCOL}{MASTER}/api/v1/oauth/";            //           ===> DOMEN FOR AUTH                  //
@@ -17,7 +18,7 @@ namespace MPZ.Config
                                                                                               ////////////////////////////////////////////////////
         private static readonly string HOST_PORT = "42522";                                  //               ===> PORT FOR MPZ SERVER         //
         public static readonly string HOST    = $"{MPROTOCOL}master.{MASTER}:{HOST_PORT}/"; //                ===> DOMEN FOR MPZ SERVER       //
-                                                                                            ////////////////////////////////////////////////////
+                                                                                           ////////////////////////////////////////////////////
         #endregion
 
         #region Main
