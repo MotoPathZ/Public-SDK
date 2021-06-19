@@ -10,9 +10,19 @@ namespace MPZ.Services
 {
     public class UserController
     {
-        public static async Task<MPZUser> ShowAuthorizationAsync(string uuid)
+        public static async Task<MPZUser> ShowOAuth2AuthorizationAsync()
         {
-            return await ShowAsync(uuid);
+            MPZClient.Logger.Log($"UserController - ShowOAuth2AuthorizationAsync");
+            string json = await Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.oauth2_auth_user);
+            try
+            {
+                return JsonConvert.DeserializeObject<MPZUser>(json);
+            }
+            catch (Exception e)
+            {
+                MPZClient.Logger.Log($"UserController - ShowUserAsync | Error: {e.Message}", Tools.Logger.LogType.Errors);
+                return new MPZUser();
+            }
         }
         public static async Task<MPZUser> ShowAsync(string uuid)
         {

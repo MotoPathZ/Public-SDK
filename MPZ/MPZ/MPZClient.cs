@@ -50,7 +50,15 @@ namespace MPZ
                 Logger.Log(config.data.accessData.AccessToken);
                 config.ConfigAndOAuth2Save();
             }
-            //user = 
+            Logger.Log("Search for the user who owns the access token");
+            user = await OAuth2GetUser();
+            Logger.Log("OAuth2 User Information");
+            Logger.Log($"OAuth2 User ID: {user.id}");
+            Logger.Log($"OAuth2 User UUID: {user.uuid}");
+            Logger.Log($"OAuth2 User Username: {user.username}");
+            Logger.Log($"OAuth2 User Last name: {user.lastname}");
+            Logger.Log($"OAuth2 User Firt Name: {user.firstname}");
+            Logger.Log("End User Information");
         }
         private async Task<Models.OAuth2AccessData> OAuth2GetToken(MPZConfig cfgData)
         {
@@ -58,12 +66,11 @@ namespace MPZ
 
             return await Task.FromResult(await OAuth2.GetElibilityToken(cfgData.OAuth2, cfgData.UserAuthorization));
         }
-        private async Task<Models.OAuth2AccessData> OAuth2GetUser(string access_token)
+        private async Task<Models.MPZUser> OAuth2GetUser()
         {
-            Logger.Log("OAuth2 - OAuth2GetUser (Search for the user who owns the token)");
+            Logger.Log("OAuth2 and User - OAuth2GetUser (Search for the user who owns the access token)");
 
-            //return await Task.FromResult(await OAuth2.GetElibilityToken(cfgData.OAuth2, cfgData.UserAuthorization));
-            return null;
+            return await Task.FromResult(await UserController.ShowOAuth2AuthorizationAsync());
         }
     }
 }
