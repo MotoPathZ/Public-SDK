@@ -15,7 +15,7 @@ namespace MPZ.Services.Communication.Personal
         {
             MPZClient.Logger.Log($"DevlogController - IndexAsync");
 
-            string json = await Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.devlog);
+            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.devlog);
 
             try
             {
@@ -23,14 +23,14 @@ namespace MPZ.Services.Communication.Personal
             }
             catch (Exception e)
             {
-                MPZClient.Logger.Log($"DevlogController - IndexAsync | Error: {e.Message}", Tools.Logger.LogType.Errors);
+                MPZClient.Logger.Log($"DevlogController - IndexAsync | Error: {e.Message}", MPZ.Tools.Logger.LogType.Errors);
                 return new List<Models.Personal.MPZDevlog>();
             }
         }
         public static async Task<Models.Personal.MPZDevlog> ShowAsync(uint id)
         {
             MPZClient.Logger.Log($"DevlogController - ShowAsync");
-            string json = await Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.devlog, id.ToString());
+            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.devlog, id.ToString());
 
             try
             {
@@ -38,7 +38,7 @@ namespace MPZ.Services.Communication.Personal
             }
             catch (Exception e)
             {
-                MPZClient.Logger.Log($"DevlogController - ShowAsync | Error: {e.Message}", Tools.Logger.LogType.Errors);
+                MPZClient.Logger.Log($"DevlogController - ShowAsync | Error: {e.Message}", MPZ.Tools.Logger.LogType.Errors);
                 return new Models.Personal.MPZDevlog();
             }
         }

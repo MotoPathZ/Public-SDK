@@ -29,17 +29,17 @@ namespace MPZ.Models
         public DateTime updated_at { get; set; }
 
 
-        public MPZUser(string _uuid)
+        public MPZUser(uint user_id)
         {
-            _ = InitAsync(_uuid);
+            _ = InitAsync(user_id);
         }
         public MPZUser()
         {
             //For create MPZ User and null var...
         }
-        private async System.Threading.Tasks.Task InitAsync(string uuid)
+        private async System.Threading.Tasks.Task InitAsync(uint user_id)
         {
-            MPZUser _user = await ShowAsync(uuid);
+            MPZUser _user = await ShowByIdAsync(user_id);
             this.id = _user.id;
             this.uuid = _user.uuid;
             this.firstname = _user.firstname;
@@ -64,7 +64,7 @@ namespace MPZ.Models
         }
         public async System.Threading.Tasks.Task UpdateAsync(MPZUser updateData)
         {
-            MPZUser _user = await UpdateAsync(uuid, updateData);
+            MPZUser _user = await UpdateOAuth2UserAsync(updateData);
             this.id = _user.id;
             this.uuid = _user.uuid;
             this.firstname = _user.firstname;

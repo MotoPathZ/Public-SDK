@@ -13,21 +13,21 @@ namespace MPZ.Services
         public static async Task<MPZUser> ShowOAuth2AuthorizationAsync()
         {
             MPZClient.Logger.Log($"UserController - ShowOAuth2AuthorizationAsync");
-            string json = await Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.oauth2_auth_user);
+            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.oa_user);
             try
             {
                 return JsonConvert.DeserializeObject<MPZUser>(json);
             }
             catch (Exception e)
             {
-                MPZClient.Logger.Log($"UserController - ShowUserAsync | Error: {e.Message}", Tools.Logger.LogType.Errors);
+                MPZClient.Logger.Log($"UserController - ShowUserAsync | Error: {e.Message}", MPZ.Tools.Logger.LogType.Errors);
                 return new MPZUser();
             }
         }
-        public static async Task<MPZUser> ShowAsync(string uuid)
+        public static async Task<MPZUser> ShowByIdAsync(uint user_id)
         {
             MPZClient.Logger.Log($"UserController - ShowUser");
-            string json = await Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.user, uuid);
+            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.user, user_id.ToString());
 
             try
             {
@@ -35,15 +35,15 @@ namespace MPZ.Services
             }
             catch (Exception e)
             {
-                MPZClient.Logger.Log($"UserController - ShowUserAsync | Error: {e.Message}", Tools.Logger.LogType.Errors);
+                MPZClient.Logger.Log($"UserController - ShowAsync | Error: {e.Message}", MPZ.Tools.Logger.LogType.Errors);
                 return new MPZUser();
             }
         }
-        public static async Task<MPZUser> UpdateAsync(string uuid, MPZUser updateData)
+        public static async Task<MPZUser> UpdateOAuth2UserAsync(MPZUser updateData)
         {
             MPZClient.Logger.Log($"UserController - ShowAsync");
             string jsonUpdateData = JsonConvert.SerializeObject(updateData);
-            string json = await Tools.Networking.SendToServerForUpdate(EndPoints.API, EndPoints.post, jsonUpdateData, uuid);
+            string json = await MPZ.Tools.Networking.SendToServerForUpdate(EndPoints.API, EndPoints.post, jsonUpdateData);
 
             try
             {
@@ -51,7 +51,7 @@ namespace MPZ.Services
             }
             catch (Exception e)
             {
-                MPZClient.Logger.Log($"UserController - ShowAsync | Error: {e.Message}", Tools.Logger.LogType.Errors);
+                MPZClient.Logger.Log($"UserController - ShowAsync | Error: {e.Message}", MPZ.Tools.Logger.LogType.Errors);
                 return new MPZUser();
             }
         }

@@ -14,10 +14,11 @@ namespace MPZ.Services
 {
     public class OAuth2 : OAuth2Base
     {
-        public static async Task<OAuth2AccessData> GetAuthUser(string access_token)
+        /* Use UserContoller@ShowOAuth2AuthorizationAsync
+        public static async Task<User> GetAuthUser(string access_token)
         {
             MPZClient.Logger.Log("OAuth2 - GetAuthUser");
             return null;
-        }
+        }*/
     }
 }

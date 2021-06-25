@@ -7,18 +7,18 @@ namespace MPZ.Tools
 {
     public class Config
     {
-        public string pathToLoad { get; set; } = "mpz.config";
+        public string pathToConfig { get; set; } = "mpz.config";
         public MPZConfigData data { get; set; }
 
         public MPZConfigData LoadConfigAndOAuth2()
         {
             MPZClient.Logger.Log("Config - LoadConfigAndOAuth2");
             MPZClient.Logger.Log("Config - Check if the config file exists");
-            if (File.Exists(pathToLoad))
+            if (File.Exists(pathToConfig))
             {
                 MPZClient.Logger.Log("Config - File Exists");
                 try { 
-                data = JsonConvert.DeserializeObject<MPZConfigData>(File.ReadAllText(pathToLoad));
+                data = JsonConvert.DeserializeObject<MPZConfigData>(File.ReadAllText(pathToConfig));
                 }
                 catch
                 {
@@ -56,14 +56,14 @@ namespace MPZ.Tools
         public void ConfigAndOAuth2Save()
         {
             MPZClient.Logger.Log("Config - ConfigAndOAuth2Save");
-            if (File.Exists(pathToLoad))
+            if (File.Exists(pathToConfig))
             {
-                File.WriteAllText(pathToLoad, JsonConvert.SerializeObject(data, Formatting.Indented));
+                File.WriteAllText(pathToConfig, JsonConvert.SerializeObject(data, Formatting.Indented));
             }
             else 
             {
-                File.Create(pathToLoad);
-                File.WriteAllText(pathToLoad, JsonConvert.SerializeObject(data, Formatting.Indented));
+                File.Create(pathToConfig);
+                File.WriteAllText(pathToConfig, JsonConvert.SerializeObject(data, Formatting.Indented));
             }
         }
     }

@@ -39,6 +39,7 @@ namespace MPZ.Tools
             if (action != null) responceData = $"/{action}";
             if (responce != null) responceData += $"/{responce}";
             link += requestTo;
+            link += responceData;
             #endregion
             return link;
         }

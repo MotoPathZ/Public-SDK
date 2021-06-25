@@ -41,7 +41,7 @@ namespace MPZ.Services
                 scope = _scope
             };
             string fromJson = JsonConvert.SerializeObject(from);
-            var jsonContent = await Tools.Networking.SendToServerForPost(EndPoints.OAUTH2, EndPoints.OAUTH2_TOKEN, fromJson);
+            var jsonContent = await MPZ.Tools.Networking.SendToServerForPost(EndPoints.OAUTH2, EndPoints.OAUTH2_TOKEN, fromJson);
             MPZClient.Logger.Log("OAuth2Base - Access Token Received!");
             OAuth2AccessData OAuth2Data = JsonConvert.DeserializeObject<OAuth2AccessData>(jsonContent);
             return OAuth2Data;
