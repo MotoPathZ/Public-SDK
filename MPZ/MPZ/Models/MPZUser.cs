@@ -24,7 +24,7 @@ namespace MPZ.Models
         public int public_identity { get; set; }
         public int system { get; set; }
         public int bot { get; set; }
-        public MPZSettings settings { get; set; }
+        public MPZUserSettings settings { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
 

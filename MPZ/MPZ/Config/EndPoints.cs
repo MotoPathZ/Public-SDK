@@ -44,10 +44,10 @@ namespace MPZ.Config
         //oauth2 user
         //private static readonly string oauth_user = "oauth_user";
         /* Prefix oa = oauth2 user authorization */
-        public static readonly string oa_user = $"oauth_user/user";
-        public static readonly string oa_auth_tools = $"oauth_user/tools";
-        public static readonly string oa_tools_top_speed = $"oauth_user/top_speed";
-        public static readonly string oa_tools_top_speed_all = $"oauth_user/all_top_speed";
+        public static readonly string oa_user = $"@me";
+        public static readonly string oa_auth_tools = $"me/tools";
+        public static readonly string oa_tools_top_speed = $"me/@top_speed";
+        public static readonly string oa_tools_top_speed_all = $"me/@top_speed/all";
         #endregion
 
         #region Other

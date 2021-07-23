@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MPZ.Models
 {
-    public class MPZSettings
+    public class MPZUserSettings
     {
         public News news { get; set; }
         public Config config { get; set; }
