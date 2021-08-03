@@ -8,19 +8,16 @@ namespace MPZ.Config
     {
         #region Domens
                                                                                                       ////////////////////////////////////////////////////
-        private static readonly string MASTER    = "127.0.0.1:8000";                                 //       ===> MASTER DOMEN                //////////
-        //private static readonly string MASTER =  "motopathz.ru";                                  //        ===> MASTER DOMEN               //////////
-        public static readonly string OAUTH2  = $"http://{MASTER}/api/v1/oauth/";                  //         ===> DOMEN FOR AUTH            //////////
-        public static readonly string API     = $"http://{MASTER}/api/{API_VERSION.v1}/";         //          ===> DOMEN FOR API            //////////
-        public static readonly string CDN     = $"http://{MASTER}/cdn/";                         //           ===> DOMEN FOR CDN           //////////
-                                                                                                ////////////////////////////////////////////////////
-        public static readonly string  HOST   = $"http://master.{MASTER}:12345/";              //             ===> DOMEN FOR MPZ SERVER ///////////
-                                                                                              ////////////////////////////////////////////////////
+        public static readonly string OAUTH2  = $"http://127.0.0.1:8000/api/v1/oauth/";              //         ===> DOMEN FOR AUTH            //////////
+        public static readonly string API     = $"http://127.0.0.1:8000/api/";                      //          ===> DOMEN FOR API            //////////
+        public static readonly string CDN     = $"http://127.0.0.1:8000/cdn/";                     //           ===> DOMEN FOR CDN           //////////
+                                                                                                  ////////////////////////////////////////////////////
         #endregion
 
         #region Main
         public static readonly string OAUTH2_TOKEN = "token/";
         public static readonly string OAUTH2_AUTHORIZE = "authorize/";
+        public static readonly string API_GET_TOKEN = "api/authorize/use/user";
         public static readonly string CDN_STATIC_FOLDER = "attachments/";
         public static readonly string CDN_STATIC_CATALOG = $"attachments/static/";
         #endregion
@@ -32,8 +29,8 @@ namespace MPZ.Config
         public static readonly string client = "clients";
         #endregion
         #region Communications
-        public static readonly string post = "/сommunication/post";
-        public static readonly string devlog = "/сommunication/devlog";
+        public static readonly string post = "сommunication/post";
+        public static readonly string devlog = "сommunication/devlog";
         #endregion
         #region Tools
         public static readonly string tools = $"tools";
@@ -47,11 +44,6 @@ namespace MPZ.Config
         public static readonly string auth_tools = $"me/tools";
         public static readonly string auth_tools_top_speed = $"me/@top_speed";
         public static readonly string auth_tools_top_speed_all = $"me/@top_speed/all";
-        #endregion
-
-        #region Other
-        //For API
-        private enum API_VERSION { v01,v02,v03,v04,v05,v06,v07,v08,v09,v1 }
         #endregion
     }
 }
