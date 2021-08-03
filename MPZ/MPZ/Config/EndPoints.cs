@@ -8,13 +8,13 @@ namespace MPZ.Config
     {
         #region Domens
                                                                                                       ////////////////////////////////////////////////////
-        private static readonly string MASTER    = "127.0.0.1:8000";                                 //       ===> MASTER DOMEN                        //
-        //private static readonly string MASTER =  "motopathz.ru";                                  //        ===> MASTER DOMEN                       //
-        public static readonly string OAUTH2  = $"http://{MASTER}/api/v1/oauth/";                  //           ===> DOMEN FOR AUTH                  //
-        public static readonly string API     = $"http://{MASTER}/api/{API_VERSION.v1}/";         //            ===> DOMEN FOR API                  //
-        public static readonly string CDN     = $"http://{MASTER}/cdn/";                         //             ===> DOMEN FOR CDN                 //
+        private static readonly string MASTER    = "127.0.0.1:8000";                                 //       ===> MASTER DOMEN                //////////
+        //private static readonly string MASTER =  "motopathz.ru";                                  //        ===> MASTER DOMEN               //////////
+        public static readonly string OAUTH2  = $"http://{MASTER}/api/v1/oauth/";                  //         ===> DOMEN FOR AUTH            //////////
+        public static readonly string API     = $"http://{MASTER}/api/{API_VERSION.v1}/";         //          ===> DOMEN FOR API            //////////
+        public static readonly string CDN     = $"http://{MASTER}/cdn/";                         //           ===> DOMEN FOR CDN           //////////
                                                                                                 ////////////////////////////////////////////////////
-        public static readonly string  HOST   = $"http://master.{MASTER}:12345/";              //                ===> DOMEN FOR MPZ SERVER       //
+        public static readonly string  HOST   = $"http://master.{MASTER}:12345/";              //             ===> DOMEN FOR MPZ SERVER ///////////
                                                                                               ////////////////////////////////////////////////////
         #endregion
 
@@ -40,14 +40,13 @@ namespace MPZ.Config
         public static readonly string top_speed = $"tools/top_speed";
         public static readonly string top_speed_all = $"tools/top_speed/all";
         #endregion
-        #region OAuth2 Auth User
-        //oauth2 user
-        //private static readonly string oauth_user = "oauth_user";
-        /* Prefix oa = oauth2 user authorization */
-        public static readonly string oa_user = $"@me";
-        public static readonly string oa_auth_tools = $"me/tools";
-        public static readonly string oa_tools_top_speed = $"me/@top_speed";
-        public static readonly string oa_tools_top_speed_all = $"me/@top_speed/all";
+        #region Auth User
+        //auth user
+        //private static readonly string auth_user = "auth_user";
+        public static readonly string auth_user = $"@me";
+        public static readonly string auth_tools = $"me/tools";
+        public static readonly string auth_tools_top_speed = $"me/@top_speed";
+        public static readonly string auth_tools_top_speed_all = $"me/@top_speed/all";
         #endregion
 
         #region Other

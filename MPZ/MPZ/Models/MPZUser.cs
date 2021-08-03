@@ -35,7 +35,7 @@ namespace MPZ.Models
         }
         public MPZUser()
         {
-            //For create MPZ User and null var...
+            //For create MPZ User and add null var...
         }
         private async System.Threading.Tasks.Task InitAsync(uint user_id)
         {
