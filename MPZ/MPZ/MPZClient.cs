@@ -11,10 +11,9 @@ namespace MPZ
     public class MPZClient
     {
         public bool isAuth;
-        public static Tools.Config config;
+        public static Tools.ConfigManager config;
         public static Tools.Logger Logger;
-        public Models.MPZUser user;
-        public MPZClient(MPZConfig cfg = null)
+        public MPZClient(MPZConfigData cfg = null)
         {
             Console.WriteLine("Initialization");
             Console.WriteLine("Initialization Logget");
@@ -23,53 +22,32 @@ namespace MPZ
 
             Init(cfg);
         }
-        private async void Init(MPZConfig cfg = null)
+        private async void Init(MPZConfigData cfg = null)
         {
             Logger.Log("Initialization Config");
-            config = new Tools.Config();
-
-            config.LoadConfigAndOAuth2();
-
+            config = new Tools.ConfigManager();
             if (cfg != null)
             {
                 Logger.Log("Loading configuration data from MPZClient");
-                config.data.dataConfig = cfg;
-                config.ConfigAndOAuth2Save();
+                config.data = cfg;
+                config.ConfigSave();
             }
-            Logger.Log("Initialization Config OAuth2");
-            if (config.data.accessData == null ||
-                config.data.accessData.AccessToken == null ||
-                config.data.accessData.AccessToken == "" ||
-                cfg != null /*&& cfg != config.data.dataConfig*/
-                )
-            {
-                Logger.Log("The access token for OAuth2 was not found or the config was updated");
-                var oAuth2AccessData = await OAuth2GetToken(config.data.dataConfig);
-                config.data.accessData = oAuth2AccessData;
-                Logger.Log("OAuth2 Token");
-                Logger.Log(config.data.accessData.AccessToken);
-                config.ConfigAndOAuth2Save();
-            }
-            Logger.Log("Search for the user who owns the access token");
-            user = await OAuth2GetUser();
-            Logger.Log("-----------------------");
-            Logger.Log("OAuth2 User Information");
-            Logger.Log($"OAuth2 User ID: {user.id}");
-            Logger.Log($"OAuth2 User UUID: {user.uuid}");
-            Logger.Log($"OAuth2 User Username: {user.username}");
-            Logger.Log($"OAuth2 User email: {user.email}");
-            Logger.Log($"OAuth2 User Email Verified At: {user.email_verified_at}");
-            Logger.Log($"OAuth2 User Last name: {user.lastname}");
-            Logger.Log($"OAuth2 User Firt Name: {user.firstname}");
-            Logger.Log("End User Information");
-            Logger.Log("--------------------");
+            else { config.LoadConfig(); }
+
+            await Services.Auth.AuthManager.Authorization();
+            config.ConfigSave();
 
         }
-        private async Task<Models.OAuth2AccessData> OAuth2GetToken(MPZConfig cfgData)
-        {
-            Logger.Log("MPZClient - OAuth2 - OAuth2GetToken");
 
-            return await Task.FromResult(await OAuth2.GetElibilityToken(cfgData.OAuth2, cfgData.UserAuthorization));
+        public async Task<Models.MPZUser> ShowAuthUser()
+        {
+            Logger.Log("MPZClient - OAuth2, API Token and User - ShowAuthUser (Search for the user who owns the access token)");
+            if (config.data.authType == MPZConfigData.AuthorizationType.OAuth2)
+                return await OAuth2GetUser();
+            else if (config.data.authType == MPZConfigData.AuthorizationType.Token)
+                return await APITokenGetUser();
+            else
+                return null;
         }
         private async Task<Models.MPZUser> OAuth2GetUser()
         {
@@ -77,8 +55,14 @@ namespace MPZ
 
             return await Task.FromResult(await UserController.ShowOAuth2AuthorizationAsync());
         }
-        public async Task<Models.MPZUser> GetUserByID(uint user_id)
+        private async Task<Models.MPZUser> APITokenGetUser()
         {
+            Logger.Log("MPZClient - OAuth2 and User - OAuth2GetUser (Search for the user who owns the access token)");
+
+            return await Task.FromResult(await UserController.ShowOAuth2AuthorizationAsync());
+        }
+        public async Task<Models.MPZUser> GetUserByID(uint user_id)
+        { 
             Logger.Log("MPZClient - GetUserByID (Search for a user by ID)");
 
             return await Task.FromResult(await UserController.ShowByIdAsync(user_id));

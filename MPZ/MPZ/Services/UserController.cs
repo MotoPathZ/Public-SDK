@@ -13,7 +13,7 @@ namespace MPZ.Services
         public static async Task<MPZUser> ShowOAuth2AuthorizationAsync()
         {
             MPZClient.Logger.Log($"UserController - ShowOAuth2AuthorizationAsync");
-            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.oa_user);
+            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.auth_user);
             try
             {
                 return JsonConvert.DeserializeObject<MPZUser>(json);

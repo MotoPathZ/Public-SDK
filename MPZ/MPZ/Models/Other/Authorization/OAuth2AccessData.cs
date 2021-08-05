@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace MPZ.Models
+namespace MPZ.Models.Other.Authorization
 {
     public class OAuth2AccessData
     {

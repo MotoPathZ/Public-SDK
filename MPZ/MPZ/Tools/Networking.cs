@@ -52,11 +52,7 @@ namespace MPZ.Tools
             {
                 using (HttpClient client = new HttpClient(httpClientHandler))
                 {
-                    if (MPZClient.config.data.accessData != null && MPZClient.config.data.accessData.AccessToken != null)
-                    {
-                        client.DefaultRequestHeaders.Authorization =
-                            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", MPZClient.config.data.accessData.AccessToken);
-                    }
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", GetBearerToken());
                     var requestMessage = new HttpRequestMessage
                     {
                         Method = HttpMethod.Get,
@@ -77,11 +73,7 @@ namespace MPZ.Tools
             {
                 using (HttpClient client = new HttpClient(httpClientHandler))
                 {
-                    if (MPZClient.config.data.accessData != null && MPZClient.config.data.accessData.AccessToken != null)
-                    {
-                        client.DefaultRequestHeaders.Authorization =
-                            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", MPZClient.config.data.accessData.AccessToken);
-                    }
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", GetBearerToken());
                     var requestMessage = new HttpRequestMessage
                     {
                         Method = HttpMethod.Post,
@@ -101,11 +93,7 @@ namespace MPZ.Tools
             {
                 using (HttpClient client = new HttpClient(httpClientHandler))
                 {
-                    if (MPZClient.config.data.accessData != null && MPZClient.config.data.accessData.AccessToken != null)
-                    {
-                        client.DefaultRequestHeaders.Authorization =
-                            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", MPZClient.config.data.accessData.AccessToken);
-                    }
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", GetBearerToken());
                     var requestMessage = new HttpRequestMessage
                     {
                         Method = HttpMethod.Put,
@@ -126,11 +114,7 @@ namespace MPZ.Tools
             {
                 using (HttpClient client = new HttpClient(httpClientHandler))
                 {
-                    if (MPZClient.config.data.accessData != null && MPZClient.config.data.accessData.AccessToken != null)
-                    {
-                        client.DefaultRequestHeaders.Authorization =
-                            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", MPZClient.config.data.accessData.AccessToken);
-                    }
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", GetBearerToken());
                     var requestMessage = new HttpRequestMessage
                     {
                         Method = HttpMethod.Delete,
@@ -145,5 +129,10 @@ namespace MPZ.Tools
             }
         }
         #endregion
+
+        private static string GetBearerToken()
+        {
+            return Services.Auth.AuthManager.GetToken();
+        }
     }
 }

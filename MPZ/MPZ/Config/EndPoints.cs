@@ -17,7 +17,7 @@ namespace MPZ.Config
         #region Main
         public static readonly string OAUTH2_TOKEN = "token/";
         public static readonly string OAUTH2_AUTHORIZE = "authorize/";
-        public static readonly string API_GET_TOKEN = "api/authorize/use/user";
+        public static readonly string GET_TOKEN_USE_USER = "/authorize/use/user";
         public static readonly string CDN_STATIC_FOLDER = "attachments/";
         public static readonly string CDN_STATIC_CATALOG = $"attachments/static/";
         #endregion

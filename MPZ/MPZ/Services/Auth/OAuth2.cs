@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using System.Web;
-using System.Net;
-using MPZ.Models;
-using MPZ.Config;
-
-namespace MPZ.Services
+﻿namespace MPZ.Services.Auth
 {
     public class OAuth2 : OAuth2Base
     {

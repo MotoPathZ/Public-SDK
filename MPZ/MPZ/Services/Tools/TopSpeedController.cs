@@ -15,7 +15,7 @@ namespace MPZ.Services.Tools
         {
             MPZClient.Logger.Log("TopSpeedController - IndexAsync");
 
-            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.oa_tools_top_speed);
+            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.auth_tools_top_speed);
             try
             {
                 return JsonConvert.DeserializeObject<MPZTopSpeed>(json);
@@ -61,7 +61,7 @@ namespace MPZ.Services.Tools
         {
             MPZClient.Logger.Log("TopSpeedController - ShowAsync");
 
-            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.oa_tools_top_speed);
+            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.auth_tools_top_speed);
             try
             {
                 return JsonConvert.DeserializeObject<MPZTopSpeed>(json);
@@ -77,7 +77,7 @@ namespace MPZ.Services.Tools
         {
             MPZClient.Logger.Log("TopSpeedController - ShowAllAsync");
 
-            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.oa_tools_top_speed_all);
+            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.auth_tools_top_speed_all);
             try
             {
                 return JsonConvert.DeserializeObject<MPZTopSpeed>(json);
@@ -89,11 +89,11 @@ namespace MPZ.Services.Tools
             }
         }
 
-        public static async Task<MPZTopSpeed> UpdateOrCreateAsync(TopSpeed updateData)
+        public static async Task<MPZTopSpeed> UpdateOrCreateAsync(TopSpeedData updateData)
         {
             MPZClient.Logger.Log($"TopSpeedController - UpdateOrCreateAsync");
             string jsonUpdateData = JsonConvert.SerializeObject(updateData);
-            string json = await MPZ.Tools.Networking.SendToServerForUpdate(EndPoints.API, EndPoints.oa_tools_top_speed, jsonUpdateData);
+            string json = await MPZ.Tools.Networking.SendToServerForUpdate(EndPoints.API, EndPoints.auth_tools_top_speed, jsonUpdateData);
 
             try
             {

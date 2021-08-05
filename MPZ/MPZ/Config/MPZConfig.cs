@@ -4,29 +4,28 @@ using System.Text;
 using Newtonsoft.Json;
 namespace MPZ.Config
 {
-    public class MPZConfigData { 
-        [JsonProperty("Data")]public MPZConfig data;
-        [JsonProperty("ApiToken")] public string api_token;
-        [JsonProperty("Oauth2AccessData")] public Models.OAuth2AccessData oauth2AccessData;
-    }
-
-    public class MPZConfig
+    public class MPZConfigData
     {
-        public enum AuthorizationType { API_Token, OAuth2 }
+        public enum AuthorizationType { User, Token, OAuth2 }
         [JsonProperty("AuthorizationType")]
         public AuthorizationType authType;
         [JsonProperty("UserAuthorizationData")]
-        public UserAuthConfig UserAuthorization;
-        [JsonProperty("OAuth2Data")]
-        public OAuth2Config OAuth2;
-        public class UserAuthConfig
+        public UserAuthData UserAuthorizationData;
+        [JsonProperty("OAuth2AuthorizationData")]
+        public OAuth2AuthData OAuth2AuthorizationData;
+        //ACCESS
+        [JsonProperty("TokenData")] 
+        public Models.Other.Authorization.TokenData tokenData;
+        [JsonProperty("Oauth2AccessData")] 
+        public Models.Other.Authorization.OAuth2AccessData oauth2AccessData;
+        public class UserAuthData
         {
             [JsonProperty("Username")]
             public string username;
             [JsonProperty("Password")]
             public string password;
         }
-        public class OAuth2Config
+        public class OAuth2AuthData
         {
             public enum grantType { client_credentials, password }
             [JsonProperty("GrantType")]

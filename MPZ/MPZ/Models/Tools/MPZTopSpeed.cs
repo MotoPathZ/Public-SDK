@@ -8,25 +8,25 @@ namespace MPZ.Models.Tools
     public class MPZTopSpeed : Services.Tools.TopSpeedController
     {
         [JsonProperty("personal_best")]
-        public TopSpeed personal_best { get; set; }
+        public TopSpeedData personal_best { get; set; }
 
         [JsonProperty("in_the_year")]
-        public TopSpeed in_the_year { get; set; }
+        public TopSpeedData in_the_year { get; set; }
 
         [JsonProperty("in_the_month")]
-        public TopSpeed in_the_month { get; set; }
+        public TopSpeedData in_the_month { get; set; }
 
         [JsonProperty("all_in_the_year")]
-        public List<TopSpeed> all_in_the_year { get; set; }
+        public List<TopSpeedData> all_in_the_year { get; set; }
 
         [JsonProperty("all_in_the_month")]
-        public List<TopSpeed> all_in_the_month { get; set; }
+        public List<TopSpeedData> all_in_the_month { get; set; }
 
         [JsonProperty("author")]
         public MPZUser author { get; set; }
 
         #region OAuth2 User
-        public async System.Threading.Tasks.Task ThisUpdateOrCreateBelongOAUser(TopSpeed send_data)
+        public async System.Threading.Tasks.Task ThisUpdateOrCreateBelongOAUser(TopSpeedData send_data)
         {
             MPZTopSpeed _data = await UpdateOrCreateAsync(send_data);
             if(_data.personal_best !=null)

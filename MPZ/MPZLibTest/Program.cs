@@ -9,13 +9,25 @@ namespace MPZLibTest
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Programm - Start MPZ Lib for testing.");
             //For Create json config
-            //CreateConfig();
+            CreateConfig();
             MPZClient mpz = new MPZClient();
-
+            MPZClient.Logger.Log("Search for the user who owns the access token");
+            var user = await mpz.ShowAuthUser();
+            MPZClient.Logger.Log("-----------------------");
+            MPZClient.Logger.Log("Auth User Information");
+            MPZClient.Logger.Log($"Auth User ID: {user.id}");
+            MPZClient.Logger.Log($"Auth User UUID: {user.uuid}");
+            MPZClient.Logger.Log($"Auth User Username: {user.username}");
+            MPZClient.Logger.Log($"Auth User email: {user.email}");
+            MPZClient.Logger.Log($"Auth User Email Verified At: {user.email_verified_at}");
+            MPZClient.Logger.Log($"Auth User Last name: {user.lastname}");
+            MPZClient.Logger.Log($"Auth User Firt Name: {user.firstname}");
+            MPZClient.Logger.Log("End User Information");
+            MPZClient.Logger.Log("--------------------");
 
             MPZClient.Logger.Log("Find a user by id to check their personal condition");
             MPZUser myUser = mpz.GetUserByID(2).Result;
@@ -51,18 +63,10 @@ namespace MPZLibTest
         static void CreateConfig()
         {
             Console.WriteLine("Programm - Start Create Config in mpz lib.");
-            new MPZClient(new MPZConfig
+            new MPZClient(new MPZConfigData
             {
-                maxTimeForResponce = 10,
-                APIVersion = MPZConfig.APIversions.main,
-                OAuth2 = new MPZConfig.OAuth2Config
-                {
-                    grant_type = MPZConfig.OAuth2Config.grantType.password,
-                    client_id = "93b32386-56e1-4a59-b4e3-548b15fbf26d",
-                    client_secret = "E5NkDrCuQ9KppiyEn4KslKMa6UB4qYkzOItE0J8b",
-                    scope = "*"
-                },
-                UserAuthorization = new MPZConfig.UserAuthConfig { username = "owner@motopathz.ru", password = "XWN-rLs-jxj-Wjr" }
+                authType = MPZConfigData.AuthorizationType.User,
+                UserAuthorizationData = new MPZConfigData.UserAuthData { username = "simakinmaksimka17072005@mail.ru", password = "yLA-LEq-YAb-J57" },
             });
         }
         #endregion

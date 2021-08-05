@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MPZ.Models.Tools
 {
-    public class TopSpeed : Services.Tools.TopSpeedController
+    public class TopSpeedData : Services.Tools.TopSpeedController
     {
         public int id { get; set; }
         public string uuid { get; set; }
