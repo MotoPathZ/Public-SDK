@@ -64,7 +64,7 @@ namespace MPZ.Models
         }
         public async System.Threading.Tasks.Task UpdateAsync(MPZUser updateData)
         {
-            MPZUser _user = await UpdateOAuth2UserAsync(updateData);
+            MPZUser _user = await UpdateUserAsync(updateData);
             this.id = _user.id;
             this.uuid = _user.uuid;
             this.firstname = _user.firstname;

@@ -15,8 +15,9 @@ namespace MPZ.Services.Auth
 
             var from = userAuthData;
             string fromJson = JsonConvert.SerializeObject(from);
-            var jsonContent = await MPZ.Tools.Networking.SendToServerForPost(EndPoints.API, EndPoints.GET_TOKEN_USE_USER, fromJson);
+            var jsonContent = MPZ.Tools.Networking.SendToServerForPost(EndPoints.API, EndPoints.GET_TOKEN_USE_USER, fromJson).Result;
             MPZClient.Logger.Log("API Token - Access Token Received!");
+            MPZClient.Logger.Log(jsonContent);
             TokenData _TokenData = JsonConvert.DeserializeObject<TokenData>(jsonContent);
             return _TokenData;
         }

@@ -20,9 +20,10 @@ namespace MPZ.Config
         public Models.Other.Authorization.OAuth2AccessData oauth2AccessData;
         public class UserAuthData
         {
-            [JsonProperty("Username")]
+            //[JsonProperty("username")]
+            [JsonProperty("email")]
             public string username;
-            [JsonProperty("Password")]
+            [JsonProperty("password")]
             public string password;
         }
         public class OAuth2AuthData

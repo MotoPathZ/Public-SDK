@@ -10,20 +10,6 @@ namespace MPZ.Services
 {
     public class UserController
     {
-        public static async Task<MPZUser> ShowOAuth2AuthorizationAsync()
-        {
-            MPZClient.Logger.Log($"UserController - ShowOAuth2AuthorizationAsync");
-            string json = await MPZ.Tools.Networking.SendToServerForGet(EndPoints.API, EndPoints.auth_user);
-            try
-            {
-                return JsonConvert.DeserializeObject<MPZUser>(json);
-            }
-            catch (Exception e)
-            {
-                MPZClient.Logger.Log($"UserController - ShowUserAsync | Error: {e.Message}", MPZ.Tools.Logger.LogType.Errors);
-                return new MPZUser();
-            }
-        }
         public static async Task<MPZUser> ShowByIdAsync(uint user_id)
         {
             MPZClient.Logger.Log($"UserController - ShowUser");
@@ -39,7 +25,7 @@ namespace MPZ.Services
                 return new MPZUser();
             }
         }
-        public static async Task<MPZUser> UpdateOAuth2UserAsync(MPZUser updateData)
+        public static async Task<MPZUser> UpdateUserAsync(MPZUser updateData)
         {
             MPZClient.Logger.Log($"UserController - ShowAsync");
             string jsonUpdateData = JsonConvert.SerializeObject(updateData);

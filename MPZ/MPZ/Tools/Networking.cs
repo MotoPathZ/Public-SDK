@@ -4,28 +4,29 @@ using System.Net.Http;
 using System.Text;
 using MPZ.Config;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace MPZ.Tools
 {
     public class Networking
     {
         #region Public method
-        public static async System.Threading.Tasks.Task<string> SendToServerForGet(string server, string requestTo, string responce = null, string action = null)
+        public static async Task<string> SendToServerForGet(string server, string requestTo, string responce = null, string action = null)
         {
             string url = GetLink(server, requestTo, responce, action);
             return await SendToServerForGetAsync(url);
         }
-        public static async System.Threading.Tasks.Task<string> SendToServerForPost(string server, string requestTo, string postData=null, string responce = null,  string action = null)
+        public static async Task<string> SendToServerForPost(string server, string requestTo, string postData=null, string responce = null,  string action = null)
         {
             string url = GetLink(server, requestTo, responce, action);
             return await SendToServerForPostAsync(url, postData);
         }
-        public static async System.Threading.Tasks.Task<string> SendToServerForUpdate(string server, string requestTo, string postData=null, string responce = null,  string action = null)
+        public static async Task<string> SendToServerForUpdate(string server, string requestTo, string postData=null, string responce = null,  string action = null)
         {
             string url = GetLink(server, requestTo, responce, action);
             return await SendToServerForUpdateAsync(url, postData);
         }
-        public static async System.Threading.Tasks.Task<string> SendToServerForDelete(string server, string requestTo, string postData=null, string responce = null,  string action = null)
+        public static async Task<string> SendToServerForDelete(string server, string requestTo, string postData=null, string responce = null,  string action = null)
         {
             string url = GetLink(server, requestTo, responce, action);
             return await SendToServerForDeleteAsync(url, postData);
@@ -88,7 +89,7 @@ namespace MPZ.Tools
         }
         private static async System.Threading.Tasks.Task<string> SendToServerForUpdateAsync(string url, string postData = null)
         {
-            MPZClient.Logger.Log("Network - SendToServerForPostAsync");
+            MPZClient.Logger.Log("Network - SendToServerForUpdateAsync");
             using (HttpClientHandler httpClientHandler = new HttpClientHandler())
             {
                 using (HttpClient client = new HttpClient(httpClientHandler))

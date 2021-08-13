@@ -7,17 +7,16 @@ namespace MPZ.Config
     public class EndPoints
     {
         #region Domens
-                                                                                                      ////////////////////////////////////////////////////
-        public static readonly string OAUTH2  = $"http://127.0.0.1:8000/api/v1/oauth/";              //         ===> DOMEN FOR AUTH            //////////
-        public static readonly string API     = $"http://127.0.0.1:8000/api/";                      //          ===> DOMEN FOR API            //////////
-        public static readonly string CDN     = $"http://127.0.0.1:8000/cdn/";                     //           ===> DOMEN FOR CDN           //////////
-                                                                                                  ////////////////////////////////////////////////////
+        public static readonly string OAUTH2 = $"http://127.0.0.1:8000/api/oauth/";
+        public static readonly string API    = $"http://127.0.0.1:8000/api/";
+        public static readonly string WEB    = $"http://127.0.0.1:8000/";
+        public static readonly string CDN    = $"http://127.0.0.1:8000/cdn/";
         #endregion
 
         #region Main
         public static readonly string OAUTH2_TOKEN = "token/";
         public static readonly string OAUTH2_AUTHORIZE = "authorize/";
-        public static readonly string GET_TOKEN_USE_USER = "/authorize/use/user";
+        public static readonly string GET_TOKEN_USE_USER = "authorize/use/user/";
         public static readonly string CDN_STATIC_FOLDER = "attachments/";
         public static readonly string CDN_STATIC_CATALOG = $"attachments/static/";
         #endregion

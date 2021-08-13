@@ -10,12 +10,17 @@ namespace MPZ.Tools
         public delegate Task<string> Message(string text, LogType type, string nameCallingClass);
         public Message messageSend;
         public Message messageShow;
-        public enum LogType:int { Messages, Wardings, Errors }
+        public enum LogType:int { Messages, Wardings, Errors, Debug }
         private LogType _logTypeShow;
         private int maxStringCount=0;
         public Logger(LogType logTypeShow)
         {
             _logTypeShow = logTypeShow;
+            messageSend = LogSend;
+            messageShow += LogShow;
+        }
+        public Logger()
+        {
             messageSend = LogSend;
             messageShow += LogShow;
         }
@@ -26,6 +31,14 @@ namespace MPZ.Tools
             var method = prevframe.GetMethod();
 
             await LogCheck(text, LogType.Messages, method.ReflectedType.Name);
+        }
+        public async void Debug(string text)
+        {
+            var stacktrace = new System.Diagnostics.StackTrace();
+            var prevframe = stacktrace.GetFrame(1);
+            var method = prevframe.GetMethod();
+
+            await LogCheck(text, LogType.Debug, method.ReflectedType.Name);
         }
         public async void Log(string text,LogType type)
         {
@@ -45,8 +58,8 @@ namespace MPZ.Tools
         }
         private async Task<string> LogCheck(string text, LogType type, string nameCallingClass)
         {
-            if (_logTypeShow > type)
-            {
+            //if (_logTypeShow > type)
+           // {
                 string textTemplate = $"{DateTime.Now} | [{type}] | MPZ Library | {nameCallingClass} | {text}";
                 if (maxStringCount == 0)
                 {
@@ -59,8 +72,8 @@ namespace MPZ.Tools
                 }
                 if (textTemplate.Length > maxStringCount) maxStringCount = textTemplate.Length;
                 return await messageSend.Invoke(text, type, nameCallingClass);
-            }
-            else return "";
+           // }
+            //else return "";
         }
 
         private async Task<string> LogSend(string text, LogType type, string nameCallingClass)
